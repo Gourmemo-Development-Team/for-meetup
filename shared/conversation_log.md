@@ -69,3 +69,33 @@ Node.jsをインストールする前から開いていたターミナル（Powe
 3. `for-meetup` フォルダに移動し、もう一度 `npm run dev` を実行してみてください。
 
 これで認識されるはずですので、お試しください！
+
+---
+
+### [2026-03-12 23:29:58] ユーザーからのメッセージ:
+npm : このシステムではスクリプトの実行が無効になっているため、ファイル C:\Program Files\nodejs\npm.ps1 を読み込むことができません。詳細については、「about_Execution_Policies」(
+https://go.microsoft.com/fwlink/?LinkID=135170) を参照してください。
+発生場所 行:1 文字:1
++ npm run dev
++ ~~~
+    + CategoryInfo          : セキュリティ エラー: (: ) []、PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccessといわれます
+
+### [2026-03-12 23:32] AIアシスタントからの返答:
+それはWindowsのPowerShellにおける「実行ポリシー（Execution Policy）」というセキュリティ設定による制限です。デフォルトではスクリプトの実行が禁止されているために発生しています。
+
+**解決方法:**
+PowerShellで以下のコマンドを実行して、スクリプトの実行を許可してください。
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+このコマンドを実行すると、確認のメッセージが表示されるので `Y` または `A`（すべて続行）を入力してください。その後、再度 `npm run dev` を実行すると正常に動作するはずです。
+
+もし上記でもうまくいかない場合は、一時的に以下のように実行することも可能です：
+```powershell
+powershell -ExecutionPolicy ByPass npm run dev
+```
+または、コマンドプロンプト（cmd）を使えばこの制限はかかりません。
+
