@@ -59,30 +59,30 @@ export default function Home() {
 
       <main className="container mx-auto px-4 mt-8">
         {/* Hero Search */}
-        <section className="relative rounded-2xl overflow-hidden mb-12 bg-stone-900 text-white shadow-xl h-[300px] flex flex-col items-center justify-center text-center p-6">
+        <section className="relative rounded-2xl overflow-hidden mb-8 bg-stone-900 text-white shadow-xl h-[240px] md:h-[300px] flex flex-col items-center justify-center text-center p-4 md:p-6 mx-auto">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
-          <div className="relative z-10 w-full max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">とっておきの、一皿を見つけよう。</h1>
-            <p className="text-stone-300 text-lg mb-8">東京の人気レストラン・カフェ・居酒屋 45,210件</p>
-
-            <div className="flex bg-white rounded-full p-2 shadow-lg w-full max-w-xl mx-auto items-center">
-              <div className="flex-1 flex items-center px-4 border-r border-stone-200">
-                <MapPin className="text-stone-400 w-5 h-5 mr-2" />
+          <div className="relative z-10 w-full max-w-2xl px-2">
+            <h1 className="text-2xl md:text-5xl font-extrabold mb-2 md:mb-4 tracking-tight">とっておきの、一皿を見つけよう。</h1>
+            <p className="text-stone-300 text-sm md:text-lg mb-6 md:mb-8">東京の人気レストラン 45,210件</p>
+            
+            <div className="flex flex-col md:flex-row bg-white rounded-2xl md:rounded-full p-2 shadow-lg w-full max-w-xl mx-auto gap-2 md:gap-0">
+              <div className="flex-1 flex items-center px-4 py-2 md:py-0 border-b md:border-b-0 md:border-r border-stone-200">
+                <MapPin className="text-stone-400 w-5 h-5 mr-2 shrink-0" />
                 <input type="text" placeholder="エリア・駅" className="w-full text-stone-800 outline-none text-sm placeholder:text-stone-400 bg-transparent" />
               </div>
-              <div className="flex-1 flex items-center px-4">
-                <Search className="text-stone-400 w-5 h-5 mr-2" />
+              <div className="flex-1 flex items-center px-4 py-2 md:py-0">
+                <Search className="text-stone-400 w-5 h-5 mr-2 shrink-0" />
                 <input type="text" placeholder="ジャンル・店名" className="w-full text-stone-800 outline-none text-sm placeholder:text-stone-400 bg-transparent" />
               </div>
-              <Button className="rounded-full px-6 bg-primary-600 hover:bg-primary-700">
+              <Button className="rounded-xl md:rounded-full px-6 py-4 md:py-2 bg-primary-600 hover:bg-primary-700 w-full md:w-auto mt-2 md:mt-0 font-bold">
                 検索
               </Button>
             </div>
           </div>
         </section>
 
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold">おすすめのレストラン</h2>
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <h2 className="text-xl md:text-2xl font-bold">おすすめのレストラン</h2>
           <Button variant="outline" size="sm" className="hidden sm:flex">
             <Filter className="w-4 h-4 mr-2" />
             絞り込み
@@ -90,7 +90,7 @@ export default function Home() {
         </div>
 
         {/* Shop List Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-16 md:pb-0">
           {MOCK_SHOPS.map((shop) => (
             <Link href={`/shop/${shop.id}`} key={shop.id} className="group flex flex-col rounded-xl overflow-hidden bg-white shadow-sm border border-stone-100 hover:shadow-md transition-all hover:-translate-y-1">
               <div className="relative aspect-[4/3] overflow-hidden">

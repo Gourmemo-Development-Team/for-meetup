@@ -37,49 +37,49 @@ export default function ShopDetail({ params }: { params: { id: string } }) {
                 </div>
             </nav>
 
-            <main className="pt-14">
-                {/* Cover Image */}
-                <div className="w-full h-[40vh] md:h-[50vh] relative bg-stone-900">
-                    <img
-                        src={shop.image}
-                        alt={shop.name}
-                        className="w-full h-full object-cover opacity-80"
-                    />
+            <main className="pt-14 pb-16 md:pb-0">
+        {/* Cover Image */}
+        <div className="w-full h-[35vh] md:h-[50vh] relative bg-stone-900">
+          <img 
+            src={shop.image} 
+            alt={shop.name} 
+            className="w-full h-full object-cover opacity-80"
+          />
+        </div>
+
+        {/* Content Container */}
+        <div className="container mx-auto px-4 -mt-12 md:-mt-16 relative z-10 max-w-4xl">
+          {/* Main Info Card */}
+          <div className="bg-white rounded-2xl shadow-xl p-5 md:p-8 mb-8 border border-stone-100">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+              <div>
+                <div className="flex items-center gap-2 text-xs md:text-sm font-medium text-stone-500 mb-2">
+                  <span>{shop.genre}</span>
+                  <span className="w-1 h-1 rounded-full bg-stone-300"></span>
+                  <span>{shop.area}</span>
                 </div>
+                <h1 className="text-2xl md:text-4xl font-extrabold text-stone-900 mb-3">{shop.name}</h1>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm font-medium">
+                  <div className="flex items-center gap-1.5 bg-amber-50 text-amber-700 w-fit px-3 py-1.5 rounded-full">
+                    <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
+                    <span className="text-base">{shop.rating}</span>
+                    <span className="text-xs opacity-70">({shop.reviews}件)</span>
+                  </div>
+                  <span className="text-stone-600">予算: {shop.price}</span>
+                </div>
+              </div>
+              <Button size="lg" className="md:w-auto bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-500/30 shrink-0 font-bold">
+                予約する
+              </Button>
+            </div>
 
-                {/* Content Container */}
-                <div className="container mx-auto px-4 -mt-16 relative z-10 max-w-4xl">
-                    {/* Main Info Card */}
-                    <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-stone-100">
-                        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                            <div>
-                                <div className="flex items-center gap-2 text-sm font-medium text-stone-500 mb-2">
-                                    <span>{shop.genre}</span>
-                                    <span className="w-1 h-1 rounded-full bg-stone-300"></span>
-                                    <span>{shop.area}</span>
-                                </div>
-                                <h1 className="text-3xl md:text-4xl font-extrabold text-stone-900 mb-4">{shop.name}</h1>
-                                <div className="flex items-center gap-4 text-sm font-medium">
-                                    <div className="flex items-center gap-1.5 bg-amber-50 text-amber-700 px-3 py-1.5 rounded-full">
-                                        <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
-                                        <span className="text-base">{shop.rating}</span>
-                                        <span className="text-xs opacity-70">({shop.reviews}件)</span>
-                                    </div>
-                                    <span className="text-stone-600">予算: {shop.price}</span>
-                                </div>
-                            </div>
-                            <Button size="lg" className="w-full md:w-auto bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-500/30 w-full shrink-0">
-                                空席確認・予約する
-                            </Button>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 mb-8">
-                            {shop.tags.map(tag => (
-                                <span key={tag} className="px-3 py-1 bg-stone-100 text-stone-700 rounded-lg text-sm font-medium">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
+            <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
+              {shop.tags.map(tag => (
+                <span key={tag} className="px-2 py-1 md:px-3 md:py-1 bg-stone-100 text-stone-700 rounded-lg text-xs md:text-sm font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
 
                         <p className="text-stone-700 leading-relaxed mb-8 text-base/7">
                             {shop.description}
