@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Star, MapPin, Clock, Phone, ChevronLeft, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ReviewSection from "@/components/ReviewSection";
 
 export default function ShopDetail({ params }: { params: { id: string } }) {
     // In a real app we'd fetch the shop data based on ID, for now using mock data
@@ -110,6 +111,10 @@ export default function ShopDetail({ params }: { params: { id: string } }) {
                             </div>
                         </div>
                     </div>
+                </div>
+                {/* Reviews */}
+                <div className="container mx-auto px-4 pb-8 max-w-4xl">
+                  <ReviewSection shopId={params.id} />
                 </div>
             </main>
         </div>

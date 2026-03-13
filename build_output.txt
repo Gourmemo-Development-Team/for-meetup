@@ -1,0 +1,13 @@
+
+> temp_next@0.1.0 build
+> next build
+
+
+> Build error occurred
+Error: EPERM: operation not permitted, unlink 'C:\Users\pauld\OneDrive\Documents\gourmemo\for-meetup\.next\static\hNu5PqGWQp3KB3Obs4gyh'
+    at ignore-listed frames {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'unlink',
+  path: 'C:\\Users\\pauld\\OneDrive\\Documents\\gourmemo\\for-meetup\\.next\\static\\hNu5PqGWQp3KB3Obs4gyh'
+}

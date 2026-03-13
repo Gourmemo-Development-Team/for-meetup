@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Star, MapPin, Search, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ShopCardReview from "@/components/ShopCardReview";
 
 const MOCK_SHOPS = [
   {
@@ -112,13 +113,14 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {shop.tags.map(tag => (
-                    <span key={tag} className="px-2 py-1 bg-stone-100 text-stone-600 rounded text-xs font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {shop.tags.map(tag => (
+                      <span key={tag} className="px-2 py-1 bg-stone-100 text-stone-600 rounded text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <ShopCardReview shopId={shop.id} />
               </div>
             </Link>
           ))}
