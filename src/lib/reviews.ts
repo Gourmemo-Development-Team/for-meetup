@@ -1,43 +1,38 @@
+import { supabase } from "./supabase";
+
 export type Review = {
   id: string;
-  shopId: string;
-  authorName: string;
+  shop_id: string;
+  author_name: string;
   rating: number;
   comment: string;
-  createdAt: string;
+  created_at: string;
 };
 
-const STORAGE_KEY = "gourmemo_reviews";
-
-export function getReviews(): Review[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const data = localStorage.getItem(STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
-  } catch {
-    return [];
-  }
+export async function getReviewsByShopId(shopId: string): Promise<Review[]> {
+  const { data, error } = await supabase
+    .from("reviews")
+    .select("*")
+    .eq("shop_id", shopId)
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  return data ?? [];
 }
 
-export function getReviewsByShopId(shopId: string): Review[] {
-  return getReviews().filter((r) => r.shopId === shopId);
+export async function addReview(
+  review: Omit<Review, "id" | "created_at">
+): Promise<Review> {
+  const { data, error } = await supabase
+    .from("reviews")
+    .insert([review])
+    .select()
+    .single();
+  if (error) throw error;
+  return data;
 }
 
-export function addReview(review: Omit<Review, "id" | "createdAt">): Review {
-  const newReview: Review = {
-    ...review,
-    id: crypto.randomUUID(),
-    createdAt: new Date().toISOString(),
-  };
-  const reviews = getReviews();
-  reviews.push(newReview);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
-  return newReview;
-}
-
-export function getAverageRating(shopId: string): number | null {
-  const reviews = getReviewsByShopId(shopId);
+export function getAverageRating(reviews: Review[]): number | null {
   if (reviews.length === 0) return null;
-  const sum = reviews.reduce((acc, r) => acc + r.rating, 0);
+  const sum = reviews.reduce((a, r) => a + r.rating, 0);
   return Math.round((sum / reviews.length) * 10) / 10;
 }
