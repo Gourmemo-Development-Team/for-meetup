@@ -59,7 +59,7 @@ export default function Home() {
 
       <main className="container mx-auto px-4 mt-8">
         {/* Hero Search */}
-        <section className="relative rounded-2xl overflow-hidden mb-8 bg-stone-900 text-white shadow-xl h-[240px] md:h-[300px] flex flex-col items-center justify-center text-center p-4 md:p-6 mx-auto">
+        <section className="relative rounded-2xl overflow-hidden mb-8 bg-stone-900 text-white shadow-xl min-h-[340px] md:min-h-[300px] py-12 md:py-0 flex flex-col items-center justify-center text-center p-4 md:p-6 mx-auto">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
           <div className="relative z-10 w-full max-w-2xl px-2">
             <h1 className="text-2xl md:text-5xl font-extrabold mb-2 md:mb-4 tracking-tight">とっておきの、一皿を見つけよう。</h1>
