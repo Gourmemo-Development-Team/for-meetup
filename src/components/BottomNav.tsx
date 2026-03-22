@@ -1,7 +1,19 @@
+"use client";
+
 import Link from "next/link";
-import { Home, Search, Heart, User } from "lucide-react";
+import { Home, Search, Heart, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 export default function BottomNav() {
+  const router = useRouter();
+  const supabase = createClient();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push("/login");
+    router.refresh();
+  };
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 z-50 md:hidden pb-safe">
       <div className="flex justify-around items-center h-16">
@@ -17,10 +29,10 @@ export default function BottomNav() {
           <Heart className="w-5 h-5 mb-1" />
           <span className="text-[10px] font-medium">保存</span>
         </Link>
-        <Link href="/login" className="flex flex-col items-center justify-center w-full h-full text-stone-500 hover:text-primary-600">
-          <User className="w-5 h-5 mb-1" />
-          <span className="text-[10px] font-medium">マイページ</span>
-        </Link>
+        <button onClick={handleLogout} className="flex flex-col items-center justify-center w-full h-full text-stone-500 hover:text-primary-600">
+          <LogOut className="w-5 h-5 mb-1" />
+          <span className="text-[10px] font-medium">ログアウト</span>
+        </button>
       </div>
     </nav>
   );

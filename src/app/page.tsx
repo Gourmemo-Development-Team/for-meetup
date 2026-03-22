@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Star, MapPin, Search, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ShopCardReview from "@/components/ShopCardReview";
+import LogoutButton from "@/components/LogoutButton";
 
 const MOCK_SHOPS = [
   {
@@ -51,6 +52,7 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#" className="text-sm font-medium hover:text-primary-600 transition-colors">予約履歴</Link>
             <Link href="#" className="text-sm font-medium hover:text-primary-600 transition-colors">保存済み</Link>
+            <LogoutButton />
             <div className="w-8 h-8 rounded-full bg-stone-200 overflow-hidden">
               <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="User avatar" />
             </div>
