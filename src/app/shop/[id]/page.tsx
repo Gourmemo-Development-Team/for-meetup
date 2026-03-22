@@ -3,10 +3,11 @@ import { Star, MapPin, Clock, Phone, ChevronLeft, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ReviewSection from "@/components/ReviewSection";
 
-export default function ShopDetail({ params }: { params: { id: string } }) {
+export default async function ShopDetail({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
     // In a real app we'd fetch the shop data based on ID, for now using mock data
     const shop = {
-        id: params.id,
+        id,
         name: "鮨 銀座 きた川",
         rating: 4.8,
         reviews: 124,
@@ -114,7 +115,7 @@ export default function ShopDetail({ params }: { params: { id: string } }) {
                 </div>
                 {/* Reviews */}
                 <div className="container mx-auto px-4 pb-8 max-w-4xl">
-                  <ReviewSection shopId={params.id} />
+                  <ReviewSection shopId={id} />
                 </div>
             </main>
         </div>
