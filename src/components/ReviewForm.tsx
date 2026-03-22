@@ -33,8 +33,8 @@ export default function ReviewForm({ shopId, onReviewAdded }: Props) {
       });
       setSubmitted(true);
       onReviewAdded();
-    } catch (err) {
-      setError("投稿に失敗しました。もう一度お試しください。");
+    } catch (err: any) {
+      setError(`エラーが発生しました: ${err?.message || JSON.stringify(err)}`);
       console.error(err);
     } finally {
       setSubmitting(false);
