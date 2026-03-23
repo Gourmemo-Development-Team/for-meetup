@@ -29,7 +29,7 @@ export default function Login() {
           password,
         });
         if (error) throw error;
-        setMessage("登録が完了しました。そのままログインできます。");
+        setMessage("登録確認メールを送信しました。メール内のリンクをクリックして登録を完了してください。");
         setIsSignUp(false);
       } else {
         const { error } = await supabase.auth.signInWithPassword({
