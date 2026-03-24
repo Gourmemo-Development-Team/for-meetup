@@ -40,7 +40,10 @@ const MOCK_SHOPS = [
   },
 ];
 
-export default function Home() {
+export default async function Home(props: { searchParams?: Promise<{ verified?: string }> }) {
+  const searchParams = await props.searchParams;
+  const isVerified = searchParams?.verified === "true";
+
   return (
     <div className="min-h-screen pb-12">
       {/* Header */}
@@ -61,6 +64,12 @@ export default function Home() {
       </header>
 
       <main className="container mx-auto px-4 mt-8">
+        {isVerified && (
+          <div className="mb-6 mx-auto max-w-2xl p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl font-bold flex items-center justify-center shadow-sm text-sm md:text-base text-center">
+            ✅ メールアドレスの確認が完了し、自動的にログインしました！
+          </div>
+        )}
+
         {/* Hero Search */}
         <section className="relative rounded-2xl overflow-hidden mb-8 bg-stone-900 text-white shadow-xl min-h-[340px] md:min-h-[300px] py-12 md:py-0 flex flex-col items-center justify-center text-center p-4 md:p-6 mx-auto">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
