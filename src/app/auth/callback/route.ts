@@ -10,8 +10,11 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     
     if (!error) {
-      // Verification successful, redirect to home page with verified=true flag
-      return NextResponse.redirect(`${origin}/?verified=true`);
+      // ユーザーの要望により、自動ログインさせずに手動でログインさせるため、一旦セッションを破棄
+      await supabase.auth.signOut();
+      
+      // Verification successful, redirect to login page with verified=true flag
+      return NextResponse.redirect(`${origin}/login?verified=true`);
     }
   }
 
